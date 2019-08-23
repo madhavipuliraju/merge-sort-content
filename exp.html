@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Merge Sort Experiment</title>
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+        <meta charset="utf-8"/>
+        <style>
+         .exp {
+             display: none;
+         }
+         table {
+             font-family: arial, sans-serif;
+             border-collapse: collapse;
+             width: 100%;
+             text-align: center;
+         }
+         th {
+             background-color:#2780C6;
+             text-align: center;
+             color:#fff;
+         }
+         #headings {
+             background-color:#2780C6;
+             text-align: center;
+             color:#fff;
+         }
+         td {
+             border: 1px solid #dddddd;
+             padding: 8px;
+             text-align: center;
+             height:20px;
+         }
+         tr:hover {
+             background-color: #ddd;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="exp" title="Mergesort">
+            <div class="longt">
+                <h1 class="hlongt"> Introduction to Merge Sort</h1>
+            </div>
+
+            <div class="preamble">
+                <div class="art txt" title="Estimation">
+                    <div class="longt">
+                        <h2 class="hlongt">Estimated Time</h2>
+                    </div>
+                    <div class="art-body">
+                    	<p>1 hour</p>
+                    </div>
+            	</div>
+
+                <div class="art req" title="Mergesort Introduction">
+	            <div class="longt">
+	                <h2 class="hlongt">Introduction</h2>
+	            </div>
+                    <div class="description">
+                        <p> Introduction video</p>
+                    </div>
+                </div>
+
+                <div class="art txt" title="Prerequisites">
+                    <div class="longt">
+                        <h2 class="hlongt">Prerequisites of the Experiment</h2>
+                    </div>
+                    <div class="art-body">
+                        <p>This experiment requires you to have basic knowledge about :</p>
+                        <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Sorting_algorithm">The Notion of Sorting</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Binary_tree">Concept of Binary tree</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Logarithm">Basics of Logarithm</a></li>
+                        </ul>
+                        <p>And above all, a curiosity to learn and explore..!</p>
+                    </div>
+            	</div>
+
+                <div class="art txt" title="Overview">
+                    <div class="longt">
+                        <h2 class="hlongt">Overview of the Experiment</h2>
+                    </div>
+                    <div class="art-body">
+                        <ul>
+                            <li>
+                                The aim of this experiment is to
+                                understand the Merge Sort
+                                algorithm, its time and space
+                                complexity, and how it compares
+                                against other sorting
+                                algorithms.
+                            </li>
+                            <li>
+                                The experiment features a series of
+                                modules with video lectures, interactive demonstrations, simulations,
+                                hands-on practice exercises and quizzes to self analyze.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="art txt" title="Learning Objectives">
+                    <div class="longt">
+                        <h2 class="hlongt">Learning Objectives of the Experiment</h2>
+                    </div>
+                    <div class="art-body">
+                        <p>In this experiment, you will be able to do the following:<br></p>
+                            <ul>
+                                <li>Learn about the divide
+                                    and conquer strategy and
+                                    how it can be used to
+                                    solve the sorting
+                                    problem.</li>
+                                <li>Given an unsorted array
+	                            of numbers, generate a
+	                            sorted array of numbers
+	                            by applying Merge Sort</li>
+                                <li>Understand MergeSort
+                                    operations : splitting
+                                    and merging, also the
+                                    associated time
+                                    complexity through
+                                    interactive animations.</li>
+                                <li>Demonstrate knowledge of
+	                            time complexity of Merge
+	                            Sort by counting the
+	                            number of operations
+	                            involved in splitting
+	                            the array at each level
+	                            and then merging in
+	                            sorted order.
+                                </li>
+                                <li>Compare Merge Sort with
+                                    other sorting algorithms
+                                    and realise mergesort as
+                                    a stable comparison
+                                    sorting algorithm.
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="art txt" title="Modules and Weightage">
+                    <div class="longt">
+                        <h2 class="hlongt">Experiment Modules & their Weightage</h2>
+                    </div>
+                    <div class="art-body">
+    	                <table width=100%>
+                            <thead>
+          		        <tr>
+          		            <th style="text-align:center">Module</th>
+          		            <th style="text-align:center">Weightage</th>
+          		            <th style="text-align:center">Expectation</th>
+          		        </tr>
+          		    </thead>
+          		    <tbody>
+          		        <tr>
+          		            <td>Pre-test</td>
+          		            <td>10%</td>
+          		            <td>Solve All Questions</td>
+          		        </tr>
+          		        <tr>
+          		            <td>Split</td>
+          		            <td>20%</td>
+          		            <td>Practice how to recursively split arrays</td>
+          		        </tr>
+          		        <tr>
+          		            <td>Merge</td>
+          		            <td>20%</td>
+          		            <td>Practice how to merge sorted arrays</td>
+          		        </tr>
+          		        <tr>
+          		            <td>Mergesort</td>
+          		            <td>30%</td>
+          		            <td>Practice the full algorithm</td>
+          		        </tr>
+
+          		        <tr>
+          		            <td>Post-test</td>
+          		            <td>20%</td>
+          		            <td>Solve all Questions</td>
+          		        </tr>
+          		    </tbody>
+          	        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lu" title="Pre-test">
+                <div class="longt" >
+	            <h1 class="hlongt">Pre-test of the Experiment</h1>
+                </div>
+
+                <div class="preamble">
+                    <div class="art txt" title="Estimation">
+                        <div class="longt">
+                            <h2 class="hlongt">Estimated Time</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>10 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Objectives">
+                        <div class="longt">
+                            <h2 class="hlongt">Instructions for Pre-Test</h2>
+                        </div>
+                        <div class="art-body">
+                            <ul>
+                                <li>Pretest includes questions on
+                                    <strong>sorting, binary trees and
+                                        logarithms.</strong></li>
+                                <li>If you want to revise
+                                    these topics before
+                                    taking the quiz, go
+                                    through the Recap module
+                                    first.</li>
+                                <li>Read the questions in
+                                    the quiz section and
+                                    select the correct
+                                    option from the ones
+                                    provided. Please note
+                                    that some
+                                    <strong>questions may
+                                     have more than one
+                                     correct response.</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Recap">
+                    <div class="longt">
+                        <h2 class="hlongt">Quick look at Sorting, Binary Trees and Logarithms</h2>
+                    </div>
+
+                    <div class="art txt" title="Sorting">
+                        <div class="longt">
+                            <h2 class="hlongt">What is Sorting?</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>Given a list of random
+                               numbers, sorting means
+                               <b>ordering</b> the numbers
+                               in either ascending or
+                               descending order.  By
+                               default, we sort numbers in
+                               an ascending order.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: Sorting">
+                        <div class="longt">
+                            <h2 class="hlongt">Unsorted and Sorted arrays</h2>
+                        </div>
+                        <div class="description">
+                            <img src="./img/sort.png" alt="sort">
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Binary tree">
+                        <div class="longt">
+                            <h2 class="hlongt">What is a Binary Tree?</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>Trees are hierarchical data structures.</p>
+                                <ul>
+                                    <li>The topmost node is called root of the tree.</li>
+                                    <li> The elements that are directly under an element are called its children.</li>
+                                    <li> The element directly above something is called its parent. </li>
+                                    <li>In a binary tree, a given node can have at maximum 2 children. </li>
+                                    <li>Leaf nodes are those having no children. </li>
+                                </ul>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: Binary tree">
+                        <div class="longt">
+                            <h2 class="hlongt">Binary Tree</h2>
+                        </div>
+                        <div class="description"><br>
+                            <img src="./img/binary.png" alt="binary">
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Logarithms">
+                        <div class="longt">
+                            <h2 class="hlongt">Logarithm</h2>
+                        </div>
+                        <div class="description">
+                            <img src="./img/log.png" alt="sort">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz" title="Pre-test Quiz">
+                    <div class="longt">
+                        <h2 class="hlongt">A Quiz with Multiple Choice Questions</h2>
+                    </div>
+
+                    <div class="mcq">  
+                        <div class="preamble">
+                            <div class="art txt" title="question1">
+                                <div class="art-body">
+                                    <p>Q1. Which of these best describes an array?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c1">
+                                    <div class="art-body">
+                                        <p>(A) A data structure that shows a hierarchical behavior</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="true">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c2">
+                                    <div class="art-body">
+                                        <p>(B) Container of objects of similar types</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c3">
+                                    <div class="art-body">
+                                        <p>(C) Container of objects of mixed types</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c4">
+                                    <div class="art-body">
+                                        <p>(D) All of the mentioned</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <div class="art txt" title="Explanation">
+                                <div class="art-body">
+                                    <p>An array is a data
+                                    structure, which can
+                                    store a fixed-size
+                                    collection of elements
+                                    of the same data type.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mcq">  
+                        <div class="preamble">
+                            <div class="art txt" title="question2">
+                                <div class="art-body">
+                                    <p>Q2. Write complexity of insertion at any point on an array:</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="true">
+                            <div class="preamble">
+                                <div class="art txt" title="q2-c1">
+                                    <div class="art-body">
+                                        <p>(A) O(N)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q2-c2">
+                                    <div class="art-body">
+                                        <p>(B) O(N^2)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q2-c3">
+                                    <div class="art-body">
+                                        <p>(C) O(NLogN)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q2-c4">
+                                    <div class="art-body">
+                                        <p>(D) None of these</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <div class="art txt" title="Explanation">
+                                <div class="art-body">
+                                    <p>Taking a general
+                  		        example,inserting into
+                  		        the middle of an array,
+                  		        you have to shift all
+                  		        the elements after that
+                  		        element, so the
+                  		        complexity for insertion
+                  		        in that case is O(n).
+                  		        Worst case would be when
+                  		        you have to insert at
+                  		        the starting of the
+                  		        array,you will need to
+                  		        move n elements.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mcq">  
+                        <div class="preamble">
+                            <div class="art txt" title="question1">
+                                <div class="art-body">
+                                    <p>Q3. What does it mean when we say that an algorithm X is asymptotically more efficient than Y?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c1">
+                                    <div class="art-body">
+                                        <p>(A) X will always be a better choice for small inputs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="true">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c2">
+                                    <div class="art-body">
+                                        <p>(B) X will always be a better choice for large inputs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c3">
+                                    <div class="art-body"><p>(C) Y will always be a better choice for small inputs</p> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c4">
+                                    <div class="art-body">
+                                        <p>(D) X will always be a better choice for all inputs</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <div class="art txt" title="Explanation">
+                                <div class="art-body">
+                                    <p>Performance could be similar for small inputs, but definitely better for larger inputs
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mcq">  
+                        <div class="preamble">
+                            <div class="art txt" title="question4">
+                                <div class="art-body">
+                                    <p>Q4. int a = 0, b = 0; <br>
+                    		        for (i = 0; i &lt; N; i++) {<br>
+                        	        a = a + rand();<br>
+                    		        }<br>
+                    		        for (j = 0; j &lt; M; j++) {<br>
+                        	        b = b + rand();<br>
+                    		        }<br>
+				        What is the time and space complexity for the above code?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c1">
+                                    <div class="art-body">
+                                        <p>(A) O(N * M) time, O(1) space</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c2">
+                                    <div class="art-body">
+                                        <p>(B) O(N + M) time, O(N + M) space</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="true">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c3">
+                                    <div class="art-body"><p>(C) O(N + M) time, O(1) space</p> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choice" data-correct="false">
+                            <div class="preamble">
+                                <div class="art txt" title="q1-c4">
+                                    <div class="art-body"><p>(D) O(N * M) time, O(N + M) space</p> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <div class="art txt" title="Explanation">
+                                <div class="art-body">
+                                    <p>The first loop runs
+                  		       for O(n) time, second
+                  		       loop runs for O(m).
+                  		       Constant extra space
+                  		       is used for 2
+                  		       variables a and b,
+                  		       hence O(1) space.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lu" title="Divide and Conquer">
+                <div class="longt">
+    	            <h2 class="hlongt">The Divide and Conquer strategy</h2>
+                </div>
+
+                <div class="preamble">
+                    <div class="art txt" title="Estimation">
+                        <div class="longt">
+                            <h2 class="hlongt">Estimated Time</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>15 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Divide and conquer">
+                        <div class="longt">
+                            <h2 class="hlongt">The Divide and Conquer paradigm</h2>
+                        </div>
+                        <div class="description">
+                            <p> Introduction video to d&c</p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Objectives">
+                        <div class="longt">
+                            <h2 class="hlongt">Learning Objectives of this Module</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>In this module, we will learn about :</p>
+                                <ul>
+                                    <li>What does divide and conquer mean and where it can be used.</li>
+                                    <li>How difficult problems can be solved by breaking them down into smaller subproblems.</li>
+                                    <li>How sorting can be done using the Divide and Conquer strategy. </li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="What is Divide and Conquer">
+    	            <div class="longt">
+    	                <h2 class="hlongt">The Divide and Conquer Strategy</h2>
+    	            </div>
+                    
+                    <div class="art req" title="Picture: Divide and Conquer">
+                        <div class="longt">
+                            <h2 class="hlongt">Divide and Conquer Strategy</h2>
+                        </div>
+                        <div class="description">
+                            <img src="./img/div.png" alt="Divide and Conquer">
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Divide and Conquer algorithm">
+                        <div class="longt">
+                            <h2 class="hlongt">Concept</h2>
+                        </div>
+
+          	        <div class="art-body">
+                            <p>Divide and conquer is a
+                               strategy based on the idea
+                               that a given hard problem can
+                               be solved by breaking it down
+                               into smaller subproblems,
+                               which are much easier to
+                               solve.  A Divide and Conquer
+                               algorithm works by
+                               recursively breaking down a
+                               problem into two or more
+                               sub-problems of similar type,
+                               until these become simple
+                               enough to be solved directly.
+                            </p>
+                            <p>
+                                The solutions to the
+                                sub-problems are then
+                                combined to give a solution
+                                to the original problem.  A
+                                typical Divide and Conquer
+                                algorithm solves a problem
+                                using following three steps:</p>
+                                <ul>
+                                    <li><b>Divide</b> : Break the given problem into subproblems of same type.</li>
+                                    <li><b>Conquer</b> : Recursively solve these subproblems</li>
+                                    <li><b>Combine</b> : Appropriately combine the answers</li>
+                                </ul>
+          	        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Sorting as a D&C problem">
+                    <div class="longt">
+    	                <h2 class="hlongt">Sorting as a Divide and Conquer problem</h2>
+    	            </div>
+
+                    <div class="art txt" title="Sorting using divide and conquer">
+                        <div class="longt">
+                            <h2 class="hlongt">Can we perform Sorting using Divide and Conquer?</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>
+                                We can visualise sorting an
+                                array of size N as two
+                                subproblems : sorting two
+                                arrays of size N/2, and then
+                                somehow combining the two
+                                smaller sorted
+                                arrays. Sorting a smaller
+                                array will be easier than
+                                sorting the bigger array.</p>
+                            <p>
+                                <b>Recursive nature of
+                                Sorting</b> : Sorting an
+                                array of size N can be
+                                recursively broken down into
+                                sorting two smaller arrays
+                                of N/2, and each of these
+                                smaller arrays can be broken
+                                down into even smaller
+                                arrays of size N/4 each, and
+                                so on.
+                            </p>
+                            <p>
+                                Merge sort is a sorting
+                                algorithm that uses this
+                                approach. In Merge Sort we
+                                will :</p>
+                                <ul>
+                                    <li> <b>DIVIDE</b> : Split an array into parts recursively into half.</li>
+                                    <li> <b>CONQUER</b> : Sort the sub-arrays individually.</li>
+                                    <li> <b>COMBINE</b> : Merge the sorted sub-arrays to get a big sorted array.</li>
+                                </ul>
+                            <p>
+                                Look at the image below and identify the divide steps and the combine steps.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: Divide and conquer in sorting">
+                        <div class="longt">
+                            <h2 class="hlongt">Divide and Conquer in Sorting</h2>
+                        </div>
+                        <div class="description">
+                            <img src="./img/dc.png" alt="dc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lu" title="Step 1 : Split">
+                <div class="longt">
+                    <h2 class="hlongt">The Split Step</h2>
+                </div>
+
+                <div class="preamble">
+                    <div class="art txt" title="Estimation">
+                        <div class="longt">
+                            <h2 class="hlongt">Estimated Time</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>10 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Split Step">
+                        <div class="longt">
+                            <h2 class="hlongt">The Split Step</h2>
+                        </div>
+                        <div class="description">
+                            <p>The split step is described here</p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Objectives">
+                        <div class="longt">
+                            <h2 class="hlongt">Learning Objectives of this Module :</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>In this module, we will : </p>
+                            <br>
+                            <ul>
+                                <li>Learn how to recursively <b>split</b> an unsorted array into smaller sub-problems</li>
+                                <li>Learn how to split even and odd numbered arrays</li>
+                                <li>Visualise the <b>split</b> tree</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Split : Concept">
+                    <div class="longt">
+                        <h2 class="hlongt">Understanding Splitting of Arrays</h2>
+                    </div>
+                    <div class="art txt" title="Finding the Mid">
+                        <div class="longt">
+                            <h2 class="hlongt">Finding the MID</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>
+                                In this case, we will
+                                recursively split our array
+                                A into two equal or nearly
+                                equal parts.<br/>
+                                Given an array with starting
+                                index START and ending index
+                                END, we will find the
+                                midpoint :</p>
+                                <ul>
+                                    <li><b>MID = (NUMBER OF ELEMENTS)/2</b> (if array has even number of elements)</li>
+                                    <li><b>MID = (NUMBER OF ELEMENTS + 1)/2</b> (if array has odd number of elements)</li>
+                                </ul>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Splitting the Array">
+                        <div class="longt">
+                            <h2 class="hlongt">Splitting the Array</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>
+                                After finding the MID, we then split the array into two subarrays :
+                            </p>
+                                <ul>
+                                    <li><b>A1  : START to MID</b></li>
+                                    <li><b>A2  : MID+1 to END</b></li>
+                                </ul>
+                                Note that an array can have even or odd number of elements.
+                                <ul>
+                                    <li>Incase of even number of elements, MID will come out to be the midpoint of START AND END, and hence the array can be divided into two equal parts of size
+                                        <b>(NUMBER OF ELEMENTS)/2</b>.</li>
+                                    <li>Incase of odd number of elements, the array will get divided into two arrays of size <b>(NUMBER OF ELEMENTS+1)/2</b> and <b>(NUMBER OF ELEMENTS-1)/2</b>, </li>
+                                </ul>
+                            <p>
+                                Look at the images below and carefully observe how even and odd numbered arrays are being split.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: Split Even">
+                        <div class="longt">
+                            <h2 class="hlongt">Splitting an Array with Even number of elements</h2>
+                        </div>
+                        <div class="description"><br><br>
+                            <img src="./img/spliteven.png" alt="Even Split">
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: Split Odd">
+                        <div class="longt">
+                            <h2 class="hlongt">Split an Array with Odd number of elements</h2>
+                        </div>
+                        <div class="description"><br><br>
+                            <img src="./img/splitodd.png" alt="Odd Split">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Split : Demo">
+                    <div class="longt">
+                        <h2 class="hlongt">Demonstration for the Split Step</h2>
+                    </div>
+
+                    <div class="art req" title="Demo Split">
+                        <div class="longt">
+                            <h2 class="hlongt">Demo : Split Step</h2>
+                        </div>
+                        <div class="description">
+                            <p>Interactive artefact where
+                               user can click on Next Step
+                               or Previous Step to
+                               understand how the array
+                               splits at different levels
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Split : Exercise">
+                    <div class="longt">
+                        <h2 class="hlongt">Exercise for the Split Step</h2>
+                    </div>
+
+                    <div class="art req" title="Split exercise">
+                        <div class="longt">
+                            <h2 class="hlongt">Exercise : Split Step</h2>
+                        </div>
+                        <div class="description">
+                            <p>Interactive artefact where
+                               user can split the array by
+                               providing the indices where the
+                               array needs to be split at each
+                               step.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lu" title="Step 2 : Merge">
+                <div class="longt">
+                    <h2 class="hlongt">The Merge Step</h2>
+                </div>
+
+                <div class="preamble">
+                    <div class="art txt" title="Estimation">
+                        <div class="longt">
+                            <h2 class="hlongt">Estimated Time</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>10 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Merge Step">
+                        <div class="longt">
+                            <h2 class="hlongt">Merge Step</h2>
+                        </div>
+                        <div class="description">
+                            <p>merge step video</p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Objectives">
+                        <div class="longt">
+                            <h2 class="hlongt">Learning Objectives of this Module :</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>In this module, we will : </p>
+                            <br>
+                            <ul>
+                                <li>Learn how to merge two sorted arrays into one big sorted array</li>
+                                <li>Visualise the <b>merge</b> step</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Merge : Concept">
+                    <div class="longt">
+                        <h2 class="hlongt">Merging of two sorted Arrays</h2>
+                    </div>
+                    <div class="art txt" title="Objective of merge">
+                        <div class="longt">
+                            <h2 class="hlongt">What is the Merge step?</h2>
+                        </div>
+                        <div class="art-body">
+                            <br/>
+                            <p>
+                                <strong>Our objective is to
+                                merge two sorted subarrays,
+                                say array[p..q] and
+                                array[q+1..r] and have the
+                                result in array[p..r].</strong>
+                            </p>
+                            <p>
+                                For this we first need to
+                                make temporary arrays and
+                                copy array[p..q] and
+                                array[q+1..r] into these
+                                temporary arrays, as we
+                                can't write over the
+                                positions in array[p..r]
+                                until we have the elements
+                                originally in array[p..q]
+                                and array[q+1..r] safely
+                                copied.
+                            </p>
+                            <p>
+                                Let's say we denote the
+                                temporary arrays by <i>Subarray1</i>[] and <i>Subarray2</i>[]
+                                and copy all the elements in
+                                array [p..q] into <i>Subarray1</i>,
+                                and all the elements in
+                                array[q+1..r] into <i>Subarray2</i>.
+                            </p>
+                            <p>
+                                <strong>The next immediate
+                                question is how big should <i>Subarray1</i> and <i>Subarray2</i> be?</strong>
+                            </p>
+                            <ul>
+                                <li>The subarray array [p..q] contains q-p+1 elements, hence <i>Subarray1</i> holds q-p+1 elements.</li>
+                                <li>The subarray array [q+1..r] contains r-q elements, hence <i>Subarray2</i> holds r-q elements</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Merge step 1">
+                        <div class="longt">
+                            <h2 class="hlongt">Initial state</h2>
+                        </div>
+                        <div class="description"><br><br>
+                            <img src="./img/step1.png" alt="Initial state">
+                        </div>
+                    </div>
+                    
+                    <div class="art req" title="Merge step 2">
+                        <div class="longt">
+                            <h2 class="hlongt">Final State</h2>
+                        </div>
+                        <div class="description"><br><br>
+                            <img src="./img/step2.png" alt="Final State">
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Merge process">
+                        <div class="longt">
+                            <h2 class="hlongt">How do we perform the merge process?</h2>
+                        </div>
+                        <div class="art-body">
+                            <br/>
+                            <p>
+                                <strong>Now in order to
+                                merge the arrays, we assign
+                                pointers to the starting
+                                index of all the three
+                                arrays: Pointer1, Pointer2
+                                and Pointer3</strong>
+                            </p>
+                            <ul>
+                                <li>We iterate over the
+                                merged array and and at
+                                each step we pick the
+                                smaller element among
+                                the ones pointed by
+                                Pointer1 and Pointer2.</li>
+                                <li>We add the smaller
+                                element to the merged
+                                array (considering
+                                ascending order).</li>
+                                <li>The selected
+                                subarray pointer and
+                                merged array pointer is
+                                incremented by one at
+                                each step.</li>
+                                <li>We continue this
+                                process until elements
+                                from both the arrays
+                                have been merged into
+                                the final array.</li>
+                                <li>If one of the
+                                subarray pointers
+                                reaches the end, the
+                                remaining elements from
+                                the other array are just
+                                copied into the merged
+                                array.</li>
+                            </ul>
+                            <p>
+                                <strong> In the example
+                                    shown above, the merge
+                                    process is at an
+                                    intermediate
+                                    step. Currently Pointer1
+                                    points to 48 and
+                                    Pointer2 points to 43.
+                                    As Pointer1 points to
+                                    the lesser element (48 >
+                                    43), that number is
+                                    selected and added to
+                                    the merged array.
+                                    Finally, both Pointer2
+                                    and Pointer 3 are moved
+                                    one step ahead as shown
+                                    in the figure.
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Merge : Demo">
+                    <div class="longt">
+                        <h2 class="hlongt">Demonstration for the Merge Step</h2>
+                    </div>
+
+                    <div class="art req" title="Merge Demo">
+                        <div class="longt">
+                            <h2 class="hlongt">Demo : Merge Step</h2>
+                        </div>
+                        <div class="description">
+                            <p>Interactive artefact where
+                               user can click on Next Step
+                               or Reset to understand how
+                               the arrays merge at different
+                               levels.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Merge : Exercise">
+                    <div class="longt">
+                        <h2 class="hlongt">Exercise for the Merge Step</h2>
+                    </div>
+
+                    <div class="art req" title="Merge exercise">
+                        <div class="longt">
+                            <h2 class="hlongt">Exercise : Merge Step</h2>
+                        </div>
+                        <div class="description">
+                            <p>Interactive artefact where
+                            user can split the array by
+                            providing the indices where the
+                            array needs to be split at each
+                            step</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lu" title="Merge Sort Algorithm">
+                <div class="longt">
+                    <h2 class="hlongt">The Merge Sort Algorithm</h2>
+                </div>
+
+                <div class="preamble">
+                    <div class="art txt" title="Estimation">
+                        <div class="longt">
+                            <h2 class="hlongt">Estimated Time</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>10 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Mergesort algorithm">
+                        <div class="longt">
+                            <h2 class="hlongt">The Mergesort Algorithm</h2>
+                        </div>
+                        <div class="description">
+                            <p>mergesort video</p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Objectives">
+                        <div class="longt">
+                            <h2 class="hlongt">Learning Objectives of this Module :</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>In this module, we will : </p>
+                            <br>
+                            <ul>
+                                <li>Learn the merge sort algorithm</li>
+                                <li>Visualise the <b>merge sort</b> tree</li>
+                                <li>Learn how to combine the split and merge step</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Mergesort : Concept">
+                    <div class="longt">
+                        <h2 class="hlongt">Merge Sort Algorithm</h2>
+                    </div>
+                    <div class="art txt" title="Mergesort Algorithm">
+                        <div class="longt">
+                            <h2 class="hlongt">The Mergesort Algorithm</h2>
+                        </div>
+                        <div class="art-body">
+                            The merge sort algorithm
+                            combines the split and merge
+                            step, to give us a sorted array.
+                            <ul>
+                                <li>First, we keep splitting
+                                the array recursively, till
+                                we get all subarrays of size
+                                1. Recall how we practiced
+                                this in the Split step</li>
+                                <li>Then, once the array
+                                cannot be split further, we
+                                start tracing back on our
+                                merge sort tree</li>
+                                <li>As we trace back, we
+                                keep merging the child
+                                subarrays and overwriting
+                                the parent subarrrays by
+                                their sorted forms.</li>
+                            </ul>
+                            To get a better overview of how
+                            mergesort works, look at the
+                            video below and then play around
+                            with the demo artefact to gain
+                            more clarity!
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: Merge Sort Tree">
+                        <div class="longt">
+                            <h2 class="hlongt">Merge Sort Tree</h2>
+                        </div>
+                        <div class="description">
+                            <img src="./img/ms_img.png" alt="MS levels">
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Mergesort Video">
+                        <div class="longt">
+                            <h2 class="hlongt">Merge Sort Video</h2>
+                        </div>
+                        <div class="description">
+                            <p>Merge sort animation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Mergesort : Demo">
+                    <div class="longt">
+                        <h2 class="hlongt">Demonstration for Merge Sort Algorithm</h2>
+                    </div>
+
+                    <div class="art req" title="Mergesort Demo">
+                        <div class="longt">
+                            <h2 class="hlongt">Demo : Merge Sort</h2>
+                        </div>
+                        <div class="description">
+                            <p>Tree representation of the whole process</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Mergesort : Exercise">
+                    <div class="longt">
+                        <h2 class="hlongt">Exercise for Merge Sort</h2>
+                    </div>
+
+                    <div class="art req" title="Mergesort Exercise">
+                        <div class="longt">
+                            <h2 class="hlongt">Exercise : Mergesort</h2>
+                        </div>
+                        <div class="description">
+                            <p>Interactive artefact where user can practise mergesort</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Mergesort-Demo">
+                    <div class="longt">
+                        <h2 class="hlongt">Demonstration for Merge Sort Algorithm</h2>
+                    </div>
+
+                    <div class="art req" title="Mergesort-Demo">
+                        <div class="longt">
+                            <h2 class="hlongt">Mergesort-Demo</h2>
+                        </div>
+                        <div class="description">
+                            <p>Tree representation of the whole process</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Mergesort-Practice">
+                    <div class="longt">
+                        <h2 class="hlongt">Demonstration for Merge Sort Algorithm</h2>
+                    </div>
+
+                    <div class="art req" title="Mergesort-Practice">
+                        <div class="longt">
+                            <h2 class="hlongt">Mergesort-Practice</h2>
+                        </div>
+                        <div class="description">
+                            <p>Tree representation of the whole process</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Mergesort-Exercise">
+                    <div class="longt">
+                        <h2 class="hlongt">Demonstration for Merge Sort Algorithm</h2>
+                    </div>
+
+                    <div class="art req" title="Mergesort-Exercise">
+                        <div class="longt">
+                            <h2 class="hlongt">Mergesort-Exercise</h2>
+                        </div>
+                        <div class="description">
+                            <p>Tree representation of the whole process</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="lu" title="Analysis">
+        	<div class="longt">
+        	    <h2 class="hlongt">Analysis of Merge Sort</h2>
+        	</div>
+
+        	<div class="preamble">
+        	    <div class="art txt" title="Estimation">
+                        <div class="longt">
+                            <h2 class="hlongt">Estimated Time</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>20 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Analysis of MergeSort">
+                        <div class="longt">
+                            <h2 class="hlongt">Analysis of mergesort</h2>
+                        </div>
+                        <div class="description">
+                            <p> time complexity is explained</p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Objectives">
+                        <div class="longt">
+                            <h2 class="hlongt">Learning Objectives of this Module</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>
+                                In this module, we will be learning about :
+                            </p>
+                            <ul>
+                                <li>
+                                    <b>Time and Space Complexity</b> : We will learn about the running time of
+                                    the split step, merge step and number of split and merge steps required
+                                    to complete the sorting process.
+                                </li>
+                                <li>
+                                    <b>Stable sort and Comparison sort</b> : We will learn about what stable
+                                    and comparison sorts are. Then we will see how
+                                    merge sort is a stable comparison sort.
+                                </li>
+                                <li>
+                                    <b>Applications</b> : We will compare merge sort with other
+                                    sorting algorithms and see in which situations merge sort is the
+                                    optimal approach to take.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Time and Space Complexity">
+        	    <div class="longt">
+        	        <h2 class="hlongt">Time and Space Complexity of Merge Sort</h2>
+        	    </div>
+
+                    <div class="art txt" title="Time Complexity">
+                        <div class="longt">
+                            <h2 class="hlongt">Running Time of Merge Sort</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>Lets assume that we are sorting <b>n</b> elements of a given array.</p>
+                            <ul><li>
+                                The <strong>split</strong> step,
+                                takes constant time,
+                                regardless of the
+                                subarray size, as this
+                                step just computes the
+                                midpoint of the
+                                array. We indicate
+                                constant time by <b>Θ(1)</b>.</li>
+                                <li>
+                                    The <strong>merge</strong> step
+                                    merges a total of n
+                                    elements, taking <b>Θ(n)</b> time.</li>
+                                <li>
+                                    To make things more
+                                    concrete, let's say
+                                    that the split and
+                                    merge steps together
+                                    take <b>cn</b> time for some constant c.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: Levels of merge">
+                        <div class="longt">
+                            <h2 class="hlongt">Merging at different levels</h2>
+                        </div>
+                        <div class="description">
+                            <img src="./img/time.png" alt="MS levels">
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Merge sort tree">
+                        <div class="longt">
+                            <h2 class="hlongt">Understanding the Merge Sort Tree</h2>
+                        </div>
+                        <div class="art-body">
+                            <ul>
+                                <li>
+                                    We have seen that
+                                    merging an array of size
+                                    N takes time cN.
+                                </li>
+                                <li>
+                                    For array of size N/2,
+                                    merging will be of order
+                                    cN/2. For size N/x,
+                                    merging will be of order
+                                    cN/x.
+                                </li>
+                                <li>
+                                    From the image, we can
+                                    observe that at level L,
+                                    we have L arrays of size
+                                    N/L, and hence total
+                                    merging time is
+                                    <b>L * c(N/L) = cN</b> for each level.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture: log(n) levels">
+                        <div class="longt">
+                            <h2 class="hlongt">Understanding Log(N) levels</h2>
+                        </div>
+                        <div class="description"><br><br>
+                            <img src="./img/time2.png" alt="MS levels">
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Log(n) levels">
+                        <div class="longt">
+                            <h2 class="hlongt">Understanding the Log(N) levels</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>
+                                The total time for mergesort
+                                is the sum of the merging
+                                times for all the levels. If
+                                there are <b>L</b> levels in the tree, then the total merging time is <b>L * cN.</b></p>
+                            <p>
+                                So what is L? We start with
+                                subproblems of size N and
+                                repeatedly halve until we
+                                get down to subproblems of
+                                size 1.
+                            </p>
+                            <ul>
+                                <li>
+                                    If <b>N = 2<sup>K</sup></b> at
+                                    level 0, then at
+                                    level 1, each array
+                                    is of size
+                                    2^(K-1). At level 2,
+                                    each array is of
+                                    size 2<sup>K-2</sup> and
+                                    at level l, each
+                                    array is of size <b>2<sup>K-l</sup></b>.
+                                </li>
+                                <li>
+                                    This implies that at
+                                    the last level,
+                                    since size of each
+                                    array is 1, <b>2<sup>K-L</sup> = 1</b>.
+                                </li>
+                                <li>
+                                    This implies that <b>(K-L) = 0</b>. Hence,
+                                    total levels (L) in
+                                    the merge sort tree
+                                    is K. And since N =
+                                    2<sup>K</sup>, <b>K = log<sub>2</sub>(N)</b>.
+                                </li>
+                                <li>
+                                    Total running time
+                                    of merge sort is <b>Θ(Nlog<sub>2</sub>N).</b>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Space Complexity">
+                        <div class="longt">
+                            <h2 class="hlongt">Space Complexity of Merge Sort</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>
+                                While merging two arrays, we
+                                require an auxillary space
+                                to temporarily store the
+                                merged array, before we plug
+                                this partially sorted array
+                                into the main array. Hence
+                                space complexity of Merge
+                                Sort is <b>O(N)</b>, as we require an auxillary array as big as the main input array.
+                            </p>
+                        </div>
+                    </div>
+        	</div>
+
+                <div class="task" title="Stable and Comparison sort">
+
+                    <div class="longt">
+        	        <h2 class="hlongt">Stable sort and Comparison sort</h2>
+        	    </div>
+
+                    <div class="art txt" title="Comparison Sort">
+                        <div class="longt">
+                            <h2 class="hlongt">What is a Comparison Sort Algorithm?</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>A Comparison Sort is a sorting algorithm where the final order is
+                                determined only by comparisons between the input elements.
+                            </p>
+                            <p>
+                                In Merge Sort, the merge procedure chooses an item from one of two
+                                arrays after comparing the top items from both arrays.<br/> Hence we
+                                can say that Merge Sort is a Comparison Sort algorithm.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Stable Sort">
+                        <div class="longt">
+                            <h2 class="hlongt">What is a Stable Sort Algorithm?</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>A sorting algorithm is said
+                                to be <b>stable</b> if two
+                                objects with equal keys
+                                appear in the same order in
+                                sorted output as they appear
+                                in the input unsorted
+                                array. For example, look at
+                                the picture below. The
+                                unsorted array has two
+                                elements with value 23. Note
+                                the order of both these
+                                elements in the stable and
+                                unstable sorted arrays.</p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Stable and Unstable sort">
+                        <div class="longt">
+                            <h2 class="hlongt">Stable and Unstable sort</h2>
+                        </div>
+                        <div class="description"><br><br>
+                            <img src="./img/stable.png" alt="Divide and Conquer">
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Stability of mergesort">
+                        <div class="longt">
+                            <h2 class="hlongt">Is Merge Sort stable?</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>Yes, merge sort is a stable
+                            sorting algorithm. Look at the
+                            picture below and keep and eye
+                            out for the ordering of <b>23</b> and <b>23*</b>. Note
+                            how the original order of these
+                            elements is retained throughout
+                            the sorting process. The
+                            relative positioning of 23 and
+                            23* does not change in the
+                            sorted output.</p>
+                        </div>
+                    </div>
+
+                    <div class="art req" title="Picture:Stable Mergesort">
+                        <div class="longt">
+                            <h2 class="hlongt">Stability of Mergesort</h2>
+                        </div>
+                        <div class="art-body">
+                            <img src="./img/stablemerge.png" alt="Stable mergesort">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task" title="Comparison with other algorithms">
+        	    <div class="longt">
+        	        <h2 class="hlongt">Comparison with other algorithms</h2>
+        	    </div>
+
+                    <div class="art req" title="Picture: Comparison of algorithms">
+                        <div class="longt">
+                            <h2 class="hlongt">Comparison of algorithms</h2>
+                        </div>
+                        <div class="art-body">
+                            <img src="./img/comparison.png" alt="comparison">
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Comparison">
+        	        <div class="longt">
+        	            <h2 class="hlongt">Comparison with other sorting algorithms</h2>
+        	        </div>
+        	        <div class="art-body">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th style="text-align:center" colspan="1">Algorithm</th>
+                                        <th style="text-align:center" colspan="3">Time</th>
+                                        <th style="text-align:center" colspan="2">Features</th>
+                                    </tr>
+                                    <tr id="headings">
+                                        <td><strong>Sort</strong></td>
+                                        <td><strong>Average</strong></td>
+                                        <td><strong>Best</strong></td>
+                                        <td><strong>Worst</strong></td>
+                                        <td><strong>Space</strong></td>
+                                        <td><strong>Stability</strong></td>
+                                    </tr>
+                                    <tr class="tablerows">
+                                        <td><a style="text-decoration:none;color:black" href="//www.cprogramming.com/tutorial/computersciencetheory/sorting1.html">Bubble
+                                            sort</a></td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>Constant</td>
+                                        <td>Stable</td>
+                                    </tr>
+                                    <tr class="tablerows">
+                                        <td><a style="text-decoration:none;color:black" href="//www.cprogramming.com/tutorial/computersciencetheory/sorting1.html">Modified
+                                            Bubble sort</a></td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(n)</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>Constant</td>
+                                        <td>Stable</td>
+                                    </tr>
+                                    <tr class="tablerows">
+                                        <td><a style="text-decoration:none;color:black" href="//www.cprogramming.com/tutorial/computersciencetheory/sorting2.html">Selection
+                                            Sort</a></td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>Constant</td>
+                                        <td>Stable</td>
+                                    </tr>
+                                    <tr class="tablerows">
+                                        <td><a style="text-decoration:none;color:black" href="//www.cprogramming.com/tutorial/computersciencetheory/sorting2.html">Insertion
+                                            Sort</a></td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>O(n)</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>Constant</td>
+                                        <td>Stable</td>
+                                    </tr>
+                                    <tr class="tablerows">
+                                        <td><a style="text-decoration:none;color:black" href="//www.cprogramming.com/tutorial/computersciencetheory/heapsort.html">Heap
+                                            Sort</a></td>
+                                        <td>O(n*log(n))</td>
+                                        <td>O(n*log(n))</td>
+                                        <td>O(n*log(n))</td>
+                                        <td>Constant</td>
+                                        <td>Unstable</td>
+                                    </tr>
+                                    <tr class="tablerows">
+                                        <td><a style="text-decoration:none;color:black" href="//www.cprogramming.com/tutorial/computersciencetheory/mergesort.html">Merge
+                                            Sort</a></td>
+                                        <td>O(n*log(n))</td>
+                                        <td>O(n*log(n))</td>
+                                        <td>O(n*log(n))</td>
+                                        <td>Depends</td>
+                                        <td>Stable</td>
+                                    </tr>
+                                    <tr class="tablerows">
+                                        <td><a style="text-decoration:none;color:black" href="//www.cprogramming.com/tutorial/computersciencetheory/quicksort.html">Quicksort</a></td>
+                                        <td>O(n*log(n))</td>
+                                        <td>O(n*log(n))</td>
+                                        <td>O(n<sup>2</sup>)</td>
+                                        <td>Constant</td>
+                                        <td>Stable</td>
+                                    </tr>
+                                </tbody></table>
+        	        </div>
+        	    </div>
+                </div>
+            </div>
+
+            <div class="lu" title="Post Test">
+       	        <div class="longt">
+                    <h2 class="hlongt">Post Test of the Experiment</h2>
+       	        </div>
+
+        	<div class="preamble">
+                    <div class="art txt" title="Estimation">
+                        <div class="longt">
+                            <h2 class="hlongt">Estimated Time</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>10 minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="art txt" title="Objectives">
+                        <div class="longt">
+                            <h2 class="hlongt">Instructions for Quiz</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>Post Test includes questions on
+                               entire experiment concepts. Read
+                               the questions in the quiz section
+                               and select the correct option
+                               from the ones provided. Please
+                               note that some questions may have
+                               more than one correct response.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+		<div class="quiz" title="Post Test Quiz">
+                    <div class="longt">
+                        <h2 class="hlongt">A Quiz with Multiple Choice Questions</h2>
+                    </div>
+		    <div class="mcq">  
+		        <div class="preamble">
+		            <div class="art txt" title="question1">
+		                <div class="art-body">
+		                    <p>Q1. What are the sizes of the sub-arrays when you split an array of size 5?</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q1-c1">
+		                    <div class="art-body">
+		                        <p>(A) 1,4</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="true">
+		            <div class="preamble">
+		                <div class="art txt" title="q1-c2">
+		                    <div class="art-body">
+		                        <p>(B) 2, 3</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q1-c3">
+		                    <div class="art-body"><p>(C) Unknown sizes</p> </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q1-c4">
+		                    <div class="art-body"><p>(D) Insufficient information</p> </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="explanation">
+		            <div class="art txt" title="Explanation">
+		                <div class="art-body">
+		                    <p>mid=(5+1)/2=3. So array is divided after index 3 and split into two subarrays with length 3 and 2.
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="mcq">  
+		        <div class="preamble">
+		            <div class="art txt" title="question2">
+		                <div class="art-body">
+		                    <p>Q2. What is the size of the merged array when you merge two arrays of size 3 each?</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c1">
+		                    <div class="art-body">
+		                        <p>(A) 3</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="true">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c2">
+		                    <div class="art-body">
+		                        <p>(B) 6</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(C) 7</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c4">
+		                    <div class="art-body">
+		                        <p>(D) Insufficient information</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="explanation">
+		            <div class="art txt" title="Explanation">
+		                <div class="art-body">
+		                    <p>The merged array is simply a combination of the two subarrays.Total elements=3+3=6</p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="mcq">  
+		        <div class="preamble">
+		            <div class="art txt" title="question3">
+		                <div class="art-body">
+		                    <p>Q3. What is the best case complexity of merge sort?</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="true">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c1">
+		                    <div class="art-body">
+		                        <p>(A) O(n log n)</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c2">
+		                    <div class="art-body">
+		                        <p>(B) O(n)</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(C) O(log n)</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(D) O(n2)</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="explanation">
+		            <div class="art txt" title="Explanation">
+		                <div class="art-body">
+		                    <p>Complexity of mergesort doesnot depend on case. It is always nlogn.
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="mcq">  
+		        <div class="preamble">
+		            <div class="art txt" title="question4">
+		                <div class="art-body">
+		                    <p>Q4. Which is false for Mergesort?</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="true">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c1">
+		                    <div class="art-body">
+		                        <p>(A) The algorithm is recursive</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c2">
+		                    <div class="art-body">
+		                        <p>(B) The algorithm requires extra storage for a temporary copy.</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(C) The invariant is that after each merge one more element is in its final position.</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c4">
+		                    <div class="art-body">
+		                        <p>(D) It is not an in-place sorting algorithm.</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="explanation">
+		            <div class="art txt" title="Explanation">
+		                <div class="art-body">
+		                    <p>The mergesort algorithm always has nlogn complexity irrespective of input.
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="mcq">  
+		        <div class="preamble">
+		            <div class="art txt" title="question5">
+		                <div class="art-body">
+		                    <p>Q5. Which of the following sorting algorithms has the lowest worst-case complexity?</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="true">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c1">
+		                    <div class="art-body">
+		                        <p>(A) Merge Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c2">
+		                    <div class="art-body">
+		                        <p>(B) Bubble Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(C) Quick Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c4">
+		                    <div class="art-body">
+		                        <p>(D) Selection Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+                        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c4">
+		                    <div class="art-body">
+		                        <p>(E) A,C</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="explanation">
+		            <div class="art txt" title="Explanation">
+		                <div class="art-body">
+		                    <p>Rest of the sorting algorithms have O(n^2) worst case sorting complexity but mergesort remains O(nlogn) in all cases.
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="mcq">  
+		        <div class="preamble">
+		            <div class="art txt" title="question6">
+		                <div class="art-body">
+		                    <p>Q6. Which of the
+		                    following sorting
+		                    algorithms, which has a
+		                    running time that is
+		                    least dependent on the
+		                    initial ordering of the
+		                    input?</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="true">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c1">
+		                    <div class="art-body">
+		                        <p>(A) Merge Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c2">
+		                    <div class="art-body">
+		                        <p>(B) Insertion Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(C) Selection Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c4">
+		                    <div class="art-body">
+		                        <p>(D) Quick Sort</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="explanation">
+		            <div class="art txt" title="Explanation">
+		                <div class="art-body">
+		                    <p>Sorting complexity of mergesort remains O(nlogn) in all cases.
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="mcq">  
+		        <div class="preamble">
+		            <div class="art txt" title="question7">
+		                <div class="art-body">
+		                    <p>Q7. In a modified merge
+		                    sort, the input array is
+		                    splitted at a position
+		                    one-third of the
+		                    length(N) of the
+		                    array. What is the worst
+		                    case time complexity of
+		                    this merge sort?</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c1">
+		                    <div class="art-body">
+		                        <p>(A) N(logN base 3)</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c2">
+		                    <div class="art-body">
+		                        <p>(B) N(logN base 2/3)</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="false">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(C) N(logN base 1/3)</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="choice" data-correct="true">
+		            <div class="preamble">
+		                <div class="art txt" title="q2-c3">
+		                    <div class="art-body">
+		                        <p>(D) N(logN base 3/2</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="explanation">
+		            <div class="art txt" title="Explanation">
+		                <div class="art-body">
+		                    <p>Recurrence relation : T(N) = T(N/3) + T(2N/3) + N.
+				        Assume a tree here.n divided in to n/3 and 2n/3.
+				        n/3 is divided into n/9 and 2n/9 ( this tree goes on the left side and vanishes to 1 element)
+				        2n/3 is divided into 2n/9 and 4n/9 ( here 4n/9 part grows even after left side has vanished)
+				        The time complexity will be based on the deepest branch of the tree.
+				        and the elements in that branch go like  n/(3/2) -- n/(3/2)^2 -- n/(3/2)^3 -- ..... 1
+				        Solving the above equation we get n * logn/log(3/2) = n logn(base 3/2).
+				        As each level requires an O(n) merge and there are logn(base 3/2) levels in the deepest branch
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>                
+                </div>      
+            </div>
+
+            <div class="lu" title="Feedback">
+        	<div class="longt">
+        	    <h2 class="hlongt">Feedback of the Experiment</h2>
+        	</div>
+
+        	<div class="preamble">
+                    <div class="art txt" title="Feedback Form">
+                        <div class="longt">
+                            <h2 class="hlongt">Feedback Form of the Experiment</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>The experiment ends here,thanks
+        		       for participating..! Please fill
+        		       in the form.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lu" title="Further Readings/References">
+                <div class="longt">
+                    <h2 class="hlongt">Further Readings and References of the Experiment</h2>
+                </div>
+
+        	<div class="preamble">
+                    <div class="art txt" title="Explore">
+                        <div class="longt">
+                            <h2 class="hlongt">Explore More About Mergesort</h2>
+                        </div>
+                        <div class="art-body">
+                            <p>You can explore more about
+                                Mergesort Experiment through
+                                following resources:
+                            </p><br>
+                            <p>
+                                <b>Some more concept :</b>
+                            </p>
+                            <ul>
+              		        <li><a href="https://www.geeksforgeeks.org/merge-sort-with-o1-extra-space-merge-and-on-lg-n-time/">Perform
+              		        MergeSort with O(1)
+              		        Space Complexity</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/3-way-merge-sort/">3-Way Merge Sort</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/merge-sort-for-linked-list/">Merge
+                                Sort for linked lists</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/in-place-merge-sort/">In
+                                place Merge Sort</a></li>
+                            </ul>
+                            <p>
+                                <b>Quizzes :</b>
+                            </p>
+                            <ul>
+                            <li><a href="https://www.sanfoundry.com/data-structure-questions-answers-merge-sort/">MCQ
+                            Quiz for Merge Sort</a></li>
+              		        <li><a href="https://www.geeksforgeeks.org/algorithms-gq/searching-and-sorting-gq/">Combined
+              		        Quiz for Sorting
+              		        Algorithms</a></li>
+              		        <li><a href="https://study.com/academy/practice/quiz-worksheet-merge-sort-in-java.html">Online
+              		        Quiz and Worksheet</a></li>
+                            </ul>                           
+                            <p>
+                                <b>References and Credits :</b>
+                            </p>
+                            <ul>
+                            <li><a href="https://www.youtube.com/watch?v=JSceec-wEyw">Video
+                            animation for Mergesort</a></li>
+              		        <li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/analysis-of-merge-sort">Analysis
+              		        of Mergesort image</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/loader.js"></script>
+    </body>
+</html>
